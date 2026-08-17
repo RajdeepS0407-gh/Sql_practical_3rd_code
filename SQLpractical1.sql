@@ -36,12 +36,12 @@ mysql> CREATE TABLE enrollment (
     -> FOREIGN KEY (course_id) REFERENCES course(course_id)
     -> );
 
-INSERT INTO department Values(1, 'Computer Science'), (2, 'Electronics');
+mysql> INSERT INTO department Values(1, 'Computer Science'), (2, 'Electronics');
 
-INSERT INTO student Values(101, 'Nilisha', 'nilisha@mail.com', '123456789012', 1 );
-INSERT INTO student Values(102, 'Rahul', 'rahul@mail.com', '987654321098', 2 );
+     ->  INSERT INTO student Values(101, 'Nilisha', 'nilisha@mail.com', '123456789012', 1 );
+     ->  INSERT INTO student Values(102, 'Rahul', 'rahul@mail.com', '987654321098', 2 );
 
-INSERT INTO course Values(501, 'DBMS', 1 ),(502, 'Circuits', 2);
+     -> INSERT INTO course Values(501, 'DBMS', 1 ),(502, 'Circuits', 2);
 
-INSERT INTO enrollment Values (101, 501, 3, 'A');
-INSERT INTO enrollment Values (101, 502, 3, 'B'); -- same student, different course; allowed
+     ->  INSERT INTO enrollment Values (101, 501, 3, 'A');
+     ->  INSERT INTO enrollment Values (101, 502, 3, 'B'); -- same student, different course; allowed
