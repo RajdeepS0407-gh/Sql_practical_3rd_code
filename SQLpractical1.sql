@@ -45,3 +45,8 @@ mysql> INSERT INTO department Values(1, 'Computer Science'), (2, 'Electronics');
 
      ->  INSERT INTO enrollment Values (101, 501, 3, 'A');
      ->  INSERT INTO enrollment Values (101, 502, 3, 'B'); -- same student, different course; allowed
+
+mysql> SELECT * FROM department;
+     ->  SELECT * FROM student;
+     ->  SELECT * FROM course;
+     ->  SELECT * FROM enrollment;
