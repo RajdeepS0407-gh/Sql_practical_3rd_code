@@ -119,4 +119,14 @@ SELECT * FROM student;
 +---------+--------------+-------------------+---------+
 2 rows in set (0.00 sec)
 -_________________________________________________________________________________________________________-
+8. Normalization Analysis (Normal Forms):
+
+- 1NF (First Normal Form): YES. Every table column holds single, atomic values with no lists, arrays, or repeating groups.
+- 2NF (Second Normal Form): YES. All non-key attributes depend on the entire primary key.
+       In the `enrollment` table, `grade` depends on the full composite primary key (`roll_no`, `course_id`, `semester`).
+- 3NF (Third Normal Form): YES. There are no transitive dependencies. Non-key columns (like `name` or `course_name`) depend only
+       on their respective primary keys and not on other non-key columns.
+- BCNF (Boyce-Codd Normal Form): YES. Every determinant in all tables (`dept_id`, `roll_no`, `course_id`, and
+      (`roll_no, course_id, semester`) is a candidate key.
+-_________________________________________________________________________________________________________-
                                                   --END--
