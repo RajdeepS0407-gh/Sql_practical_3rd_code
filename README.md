@@ -128,5 +128,6 @@ SELECT * FROM student;
        on their respective primary keys and not on other non-key columns.
 - BCNF (Boyce-Codd Normal Form): YES. Every determinant in all tables (`dept_id`, `roll_no`, `course_id`, and
       (`roll_no, course_id, semester`) is a candidate key.
+
 -_________________________________________________________________________________________________________-
                                                   --END--
