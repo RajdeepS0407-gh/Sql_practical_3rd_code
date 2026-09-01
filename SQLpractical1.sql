@@ -16,6 +16,9 @@ CREATE TABLE student (
      FOREIGN KEY (dept_id) REFERENCES department(dept_id)
      );
 
+CREATE INDEX idx_student_dept ON student(dept_id);
+
+
 CREATE TABLE course (
      course_id INT PRIMARY KEY,
      course_name VARCHAR(50) NOT NULL,
