@@ -5,6 +5,7 @@
 ```sql
 CREATE DATABASE college_demo;
 USE college_demo;
+```
 
 --Explanation:
 > CREATE DATABASE college_demo;: Creates a new database named college_demo.
@@ -20,6 +21,7 @@ CREATE TABLE department(
     dept_id INT PRIMARY KEY,
     dept_name VARCHAR(50) UNIQUE NOT NULL
 );
+```
 
 --Explanation: Creates the department table.
               > dept_id: Unique identifier for each department (Primary Key).
@@ -36,6 +38,7 @@ CREATE TABLE student (
     dept_id INT,
     FOREIGN KEY (dept_id) REFERENCES department(dept_id)
 );
+```
 
 --Explanation: Creates the student table.
              > roll_no: Unique student roll number (Primary Key).
@@ -43,6 +46,22 @@ CREATE TABLE student (
              > email: Unique email address.
              > FOREIGN KEY (dept_id): Links each student to a valid department in the department table.
 --Output: Query OK, 0 rows affected (0.06 sec)
+
+-_________________________________________________________________________________________________________-
+
+3.1. Creating Index on student Table:
+
+```sql
+CREATE INDEX idx_student_dept ON student(dept_id);
+```
+-- Explanation:
+
+Creates a non-unique index named idx_student_dept on the dept_id column of the student table to improve performance for queries filtering or joining by department ID.
+
+-- Output:
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
 -_________________________________________________________________________________________________________-
 4. Creating course Table:
 
@@ -53,6 +72,7 @@ CREATE TABLE course (
     dept_id INT,
     FOREIGN KEY (dept_id) REFERENCES department(dept_id)
 );
+```
 
 --Explanation: Creates the course table.
               > course_id: Unique ID for each course (Primary Key).
@@ -72,6 +92,7 @@ CREATE TABLE enrollment (
     FOREIGN KEY (roll_no) REFERENCES student(roll_no),
     FOREIGN KEY (course_id) REFERENCES course(course_id)
 );
+```
 
 --Explanation: Creates a composite table linking students to courses.
                > semester: Must be a value between 1 and 8 (CHECK constraint).
@@ -91,6 +112,7 @@ INSERT INTO course Values(501, 'DBMS', 1 ),(502, 'Circuits', 2);
 
 INSERT INTO enrollment Values (101, 501, 3, 'A');
 INSERT INTO enrollment Values (101, 502, 3, 'B'); -- same student, different course; allowed
+```
 
 --Explanation:
 > Populates tables with sample data while strictly matching foreign key references (e.g. dept_id 1 and 2 exist in department).
@@ -108,6 +130,7 @@ Query OK, 1 row affected (0.01 sec)   -- enrollment 101 (Circuits)
 
 ```sql
 SELECT * FROM student;
+```
 
 --Explanation: Retrieves all student records to verify successful insertion.
 --Output:
