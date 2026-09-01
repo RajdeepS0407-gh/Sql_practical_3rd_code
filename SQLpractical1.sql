@@ -11,14 +11,15 @@ CREATE TABLE department(
      );
 
 CREATE TABLE student (
-     roll_no INT PRIMARY KEY,
-     name VARCHAR(50) NOT NULL,
-     email VARCHAR(50) UNIQUE,
-     phone VARCHAR(15),
-     dept_id INT,
-     cgpa DECIMAL(3, 2),
-     FOREIGN KEY (dept_id) REFERENCES department(dept_id)
-     );
+    roll_no INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) UNIQUE,
+    phone VARCHAR(15),
+    dept_id INT,
+    cgpa DECIMAL(3, 2),
+    transaction_id VARCHAR(36), 
+    FOREIGN KEY (dept_id) REFERENCES department(dept_id)
+);
 
 CREATE INDEX idx_student_dept ON student(dept_id);
 
@@ -42,8 +43,8 @@ CREATE TABLE enrollment (
 
 INSERT INTO department Values(1, 'Computer Science'), (2, 'Electronics');
 
-      INSERT INTO student VALUES (101, 'Nilisha', 'nilisha@mail.com', '123456789012', 1, 8.50);
-      INSERT INTO student VALUES (102, 'Rahul', 'rahul@mail.com', '987654321098', 2, 9.10);
+      INSERT INTO student VALUES (101, 'Nilisha', 'nilisha@mail.com', '123456789012', 1, 8.50, 'TXN1001');
+      INSERT INTO student VALUES (102, 'Rahul', 'rahul@mail.com', '987654321098', 2, 9.10, 'TXN1002');
 
        INSERT INTO course Values(501, 'DBMS', 1 ),(502, 'Circuits', 2);
 
