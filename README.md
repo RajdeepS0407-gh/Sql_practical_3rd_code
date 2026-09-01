@@ -179,6 +179,15 @@ SELECT * FROM enrollment WHERE roll_no = 101;
 -- Explanation:
 Demonstrates starting an explicit transaction block, updating Nilisha's CGPA to 9.5, and querying active enrollment records for student 101.
 
+-- Output (Student Table showing updated CGPA):
++---------+---------+------------------+--------------+---------+------+
+| roll_no | name    | email            | phone        | dept_id | cgpa |
++---------+---------+------------------+--------------+---------+------+
+|     101 | Nilisha | nilisha@mail.com | 123456789012 |       1 | 9.50 |
+|     102 | Rahul   | rahul@mail.com   | 987654321098 |       2 | 9.10 |
++---------+---------+------------------+--------------+---------+------+
+2 rows in set (0.00 sec)
+
 -- Output (Enrollment for Student 101):
 +---------+-----------+----------+-------+
 | roll_no | course_id | semester | grade |
