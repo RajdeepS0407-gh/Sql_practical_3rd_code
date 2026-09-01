@@ -1,7 +1,7 @@
+DROP DATABASE IF EXISTS college_demo;
 CREATE DATABASE college_demo;
 
 USE college_demo;
-Database changed
     
 CREATE TABLE department(
      dept_id INT PRIMARY KEY,
@@ -12,6 +12,7 @@ CREATE TABLE student (
      roll_no INT PRIMARY KEY,
      name VARCHAR(50) NOT NULL,
      email VARCHAR(50) UNIQUE,
+     phone VARCHAR(15),
      dept_id INT,
      FOREIGN KEY (dept_id) REFERENCES department(dept_id)
      );
@@ -47,6 +48,6 @@ INSERT INTO department Values(1, 'Computer Science'), (2, 'Electronics');
        INSERT INTO enrollment Values (101, 502, 3, 'B'); -- same student, different course; allowed
 
 SELECT * FROM department;
-       SELECT * FROM student;
        SELECT * FROM course;
        SELECT * FROM enrollment;
+       SELECT * FROM student;
