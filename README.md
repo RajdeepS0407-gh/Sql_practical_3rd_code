@@ -38,6 +38,7 @@ CREATE TABLE student (
     phone VARCHAR(15),
     dept_id INT,
     cgpa DECIMAL(3, 2),
+    transaction_id VARCHAR(36),
     FOREIGN KEY (dept_id) REFERENCES department(dept_id)
 );
 ```
@@ -46,6 +47,8 @@ CREATE TABLE student (
              > roll_no: Unique student roll number (Primary Key).
              > name: Student's name (Cannot be blank).
              > email: Unique email address.
+             > cgpa: Stores Cumulative Grade Point Average up to 9.99 with 2 decimal places.
+             > transaction_id: Unique string identifier to track transaction logs or sessions.
              > FOREIGN KEY (dept_id): Links each student to a valid department in the department table.
 --Output: Query OK, 0 rows affected (0.06 sec)
 
@@ -136,12 +139,12 @@ SELECT * FROM student;
 
 --Explanation: Retrieves all student records to verify successful insertion.
 --Output:
-+---------+---------+------------------+--------------+---------+------+
-| roll_no | name    | email            | phone        | dept_id | cgpa |
-+---------+---------+------------------+--------------+---------+------+
-|     101 | Nilisha | nilisha@mail.com | 123456789012 |       1 | 8.50 |
-|     102 | Rahul   | rahul@mail.com   | 987654321098 |       2 | 9.10 |
-+---------+---------+------------------+--------------+---------+------+
++---------+---------+------------------+--------------+---------+------+----------------+
+| roll_no | name    | email            | phone        | dept_id | cgpa | transaction_id |
++---------+---------+------------------+--------------+---------+------+----------------+
+|     101 | Nilisha | nilisha@mail.com | 123456789012 |       1 | 8.50 | TXN1001        |
+|     102 | Rahul   | rahul@mail.com   | 987654321098 |       2 | 9.10 | TXN1002        |
++---------+---------+------------------+--------------+---------+------+----------------+
 2 rows in set (0.00 sec)
 -_________________________________________________________________________________________________________-
 
@@ -180,12 +183,12 @@ SELECT * FROM enrollment WHERE roll_no = 101;
 Demonstrates starting an explicit transaction block, updating Nilisha's CGPA to 9.5, and querying active enrollment records for student 101.
 
 -- Output (Student Table showing updated CGPA):
-+---------+---------+------------------+--------------+---------+------+
-| roll_no | name    | email            | phone        | dept_id | cgpa |
-+---------+---------+------------------+--------------+---------+------+
-|     101 | Nilisha | nilisha@mail.com | 123456789012 |       1 | 9.50 |
-|     102 | Rahul   | rahul@mail.com   | 987654321098 |       2 | 9.10 |
-+---------+---------+------------------+--------------+---------+------+
++---------+---------+------------------+--------------+---------+------+----------------+
+| roll_no | name    | email            | phone        | dept_id | cgpa | transaction_id |
++---------+---------+------------------+--------------+---------+------+----------------+
+|     101 | Nilisha | nilisha@mail.com | 123456789012 |       1 | 9.50 | TXN1001        |
+|     102 | Rahul   | rahul@mail.com   | 987654321098 |       2 | 9.10 | TXN1002        |
++---------+---------+------------------+--------------+---------+------+----------------+
 2 rows in set (0.00 sec)
 
 -- Output (Enrollment for Student 101):
