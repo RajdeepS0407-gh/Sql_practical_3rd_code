@@ -2,6 +2,8 @@ DROP DATABASE IF EXISTS college_demo;
 CREATE DATABASE college_demo;
 
 USE college_demo;
+
+SELECT @@transaction_isolation;
     
 CREATE TABLE department(
      dept_id INT PRIMARY KEY,
