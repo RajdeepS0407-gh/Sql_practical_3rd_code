@@ -63,6 +63,15 @@ UPDATE student
 SET cgpa = 9.5 
 WHERE roll_no = 101;
 
+SELECT * FROM student;
+SELECT * FROM enrollment WHERE roll_no = 101;
+
+Explain SELECT * FROM student WHERE dept_id= 1;
+set transaction isolation level read uncommitted;
+
+start transaction;
+SELECT roll_no, name, cgpa FROM student WHERE roll_no = 101;
+
 -- (Session B) 
 SELECT * FROM student;
 SELECT * FROM enrollment WHERE roll_no = 101;
